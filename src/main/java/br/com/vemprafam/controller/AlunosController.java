@@ -20,12 +20,12 @@ public class AlunosController {
 
 	@GetMapping
     public String homeEmpty() {
-        return "index"; // Retorna o nome do template da página inicial
+        return "alunos"; // Retorna o nome do template da página inicial
     }
 
 	@GetMapping("/")
     public String home() {
-        return "index"; // Retorna o nome do template da página inicial
+        return "alunos"; // Retorna o nome do template da página inicial
     }
 
 	@GetMapping("/new")
