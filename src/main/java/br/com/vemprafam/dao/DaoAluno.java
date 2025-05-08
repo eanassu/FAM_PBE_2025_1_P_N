@@ -9,20 +9,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import br.com.vemprafam.pojo.Aluno;
 
+@Repository
 public class DaoAluno {
-
-	private String url = "jdbc:hsqldb:hsql://localhost/";
-	private String user = "SA";
-	private String password = "";
 
 	private Connection connection;
 
-	public DaoAluno() {
+	public DaoAluno(DataSource dataSource) {
 		if (connection == null) {
 			try {
-				connection = DriverManager.getConnection(url,user,password);
+				connection = dataSource.getConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -108,15 +110,15 @@ public class DaoAluno {
 	}
 
 	public static void main(String[] args) {
-		DaoAluno dao = new DaoAluno();
+//		DaoAluno dao = new DaoAluno();
 //		dao.insert(new Aluno(1,"aaa",new java.util.Date(),1000.0));
 //		dao.insert(new Aluno(2,"bbb",new java.util.Date(),2000.0));
 //		dao.insert(new Aluno(3,"ccc",new java.util.Date(),3000.0));
 //		dao.insert(new Aluno(4,"ddd",new java.util.Date(),4000.0));
-		System.out.println(dao.buscarPeloRa(3));
-		dao.update(new Aluno(3,"ccc123",new java.util.Date(),3333.3));
-		System.out.println(dao.getLista());
-		dao.delete(new Aluno(4,null,null,null));
-		System.out.println(dao.getLista());
+//		System.out.println(dao.buscarPeloRa(3));
+//		dao.update(new Aluno(3,"ccc123",new java.util.Date(),3333.3));
+//		System.out.println(dao.getLista());
+//		dao.delete(new Aluno(4,null,null,null));
+//		System.out.println(dao.getLista());
 	}
 }

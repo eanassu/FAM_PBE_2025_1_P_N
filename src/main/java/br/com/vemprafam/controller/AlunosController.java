@@ -2,6 +2,7 @@ package br.com.vemprafam.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,12 @@ import br.com.vemprafam.pojo.Aluno;
 @RequestMapping("/alunos")
 public class AlunosController {
 
-    private DaoAluno dao = new DaoAluno();
+    private DaoAluno dao;
+
+    @Autowired
+    public AlunosController(DaoAluno dao) {
+    	this.dao = dao;
+    }
 
     @GetMapping
     public String homeEmpty() {
